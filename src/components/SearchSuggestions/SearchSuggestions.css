@@ -1,0 +1,19 @@
+.search-suggestions {
+    position: absolute;
+
+    top: calc(100% + var(--space-xs));
+    /* 100%: baja la altura del contenedor padre.
+       var(--space-xs): deja un pequeño hueco. */
+
+    left: 0;    /* Empieza donde empieza el SearchInput */
+    right: 0;   /* Termina donde termina el SearchInput */
+
+    background-color: var(--color-surface);
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+
+    box-shadow: var(--shadow-sm);
+
+    overflow: hidden; /* Evita que el contenido sobresalga del borde redondeado */
+}

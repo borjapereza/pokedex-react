@@ -1,0 +1,14 @@
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.logo__icon {
+  width: 70px;
+  height: 70px;
+}
+
+.logo__text {
+  color: var(--color-surface);
+}

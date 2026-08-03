@@ -1,0 +1,15 @@
+.type-filters {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.type-filters__title {
+  color: var(--color-primary);
+}
+
+.type-filters__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md) var(--space-lg);
+}

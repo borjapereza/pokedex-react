@@ -1,0 +1,97 @@
+.pokemon-card {
+  --card-width: 288px;
+  display: flex;
+  flex-direction: column;
+  width: var(--card-width);
+  box-sizing: border-box;
+
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+
+  background-color: var(--color-surface);
+
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+
+  box-shadow: var(--shadow-md);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  cursor: pointer;
+}
+
+.pokemon-card__image {
+  height: 200px;
+  width: 200px;
+}
+
+.pokemon-card__header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-xs) var(--space-md);
+  gap: var(--space-sm);
+}
+
+.pokemon-card__name {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-title);
+  color: var(--color-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pokemon-card__number {
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+  color: var(--color-text-secondary);
+}
+
+.pokemon-card__types {
+  display: flex;
+  gap: var(--space-sm);
+  width: 100%;
+  justify-content: center;
+}
+
+.pokemon-card--with-action {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.pokemon-card__button {
+  width: var(--card-width);
+
+  border-style: solid;
+  border-color: var(--color-border);
+  border-width: 0 1px 1px 1px;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+
+  padding: var(--space-md);
+
+  background-color: var(--color-primary);
+
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+  color: var(--color-surface);
+
+  text-align: center;
+  transition: color 0.1s ease;
+}
+
+.pokemon-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.pokemon-card__button:hover {
+  color: var(--color-secondary);
+}

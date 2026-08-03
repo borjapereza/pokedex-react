@@ -1,0 +1,18 @@
+.header {
+  background-color: var(--color-primary);
+}
+
+.header__container {
+  max-width: 1220px; /* Ancho máximo del contenedor */
+  height: 100px; /* Alto del contenedor */
+
+  margin: 0 auto; /* Sin margen vertical y centrado horizontalmente */
+
+  padding: 0 var(--space-sm); /* Sin padding vertical y Space SM a izquierda y derecha */
+
+  display: flex; /* Activa Flexbox */
+
+  align-items: center; /* Centra los elementos verticalmente */
+  /* gap Separación entre los elementos del contenedor Flex */
+  justify-content: space-between; /* Coloca el primer elemento al inicio y el último al final */
+}

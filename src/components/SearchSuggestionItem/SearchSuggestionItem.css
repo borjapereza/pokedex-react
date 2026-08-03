@@ -1,0 +1,42 @@
+.search-suggestion-item {
+  width: 100%; /* El usuario pueda clicar en cualquier parte de la fila */
+
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+
+  padding: var(--space-sm) var(--space-lg);
+
+  background: transparent;
+  border: none;
+
+  cursor: pointer;
+
+  text-align: left;
+  transition:
+    background-color 0.1s ease,
+    border-left-color 0.1s ease;
+}
+
+.search-suggestion-item:hover,
+.search-suggestion-item--selected {
+  border-left: 4px solid var(--color-primary);
+  background-color: var(--color-border);
+}
+
+.search-suggestion-item__sprite {
+  width: 40px;
+  height: 40px;
+
+  flex-shrink: 0;
+}
+
+.search-suggestion-item__name {
+  font-size: var(--font-size-body);
+  flex: 1;
+}
+
+.search-suggestion-item__number {
+  font-size: var(--font-size-caption);
+  color: var(--color-text-secondary);
+}

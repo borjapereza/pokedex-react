@@ -1,0 +1,12 @@
+.pokemon-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xl) var(--space-2xl);
+  justify-content: center;
+  margin-top: var(--space-md);
+}
+
+.pokemon-grid__sentinel {
+  width: 100%;
+  height: 1px;
+}
