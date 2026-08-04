@@ -1,15 +1,22 @@
 import { TIPOS } from "../../services/types";
 
-import Badge from "../Badge/Badge";
+import FilterBadge from "../FilterBadge/FilterBadge";
 
 import "./TypeFilters.css";
 
 interface TypeFiltersProps {
   titulo: string;
+  tiposSeleccionados: string[];
+  onCambiarTipo: (tipo: string) => void;
 }
 
-export default function TypeFilters({ titulo }: TypeFiltersProps) {
+export default function TypeFilters({
+  titulo,
+  tiposSeleccionados,
+  onCambiarTipo,
+}: TypeFiltersProps) {
   const tipos = TIPOS;
+  const hayTiposSeleccionados = tiposSeleccionados.length > 0;
 
   return (
     <section className="type-filters">
@@ -17,7 +24,13 @@ export default function TypeFilters({ titulo }: TypeFiltersProps) {
 
       <div className="type-filters__badges">
         {tipos.map((tipo) => (
-          <Badge key={tipo} tipo={tipo} />
+          <FilterBadge
+            key={tipo}
+            tipo={tipo}
+            activo={tiposSeleccionados.includes(tipo)}
+            deshabilitado={hayTiposSeleccionados && !tiposSeleccionados.includes(tipo)}
+            onClick={() => onCambiarTipo(tipo)}
+          />
         ))}
       </div>
     </section>

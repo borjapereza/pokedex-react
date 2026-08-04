@@ -25,8 +25,20 @@ export function traducirTipo(tipo: string): string {
   return traduccionTipo[tipo] ?? tipo;
 }
 
-export function obtenerPokemonHome(
-  listaPokemon: Pokemon[],
-): Pokemon[] {
+export function obtenerPokemonHome(listaPokemon: Pokemon[]): Pokemon[] {
   return listaPokemon.filter((pokemon) => pokemon.id < 10000);
+}
+
+export function filtrarPokemonPorTipos(
+  listaPokemon: Pokemon[],
+  tiposSeleccionados: string[],
+): Pokemon[] {
+  if (tiposSeleccionados.length === 0) {
+    return listaPokemon;
+  }
+
+  return listaPokemon.filter((pokemon) =>
+    // "De todos los tipos seleccionados, ¿están todos incluidos en los tipos del Pokémon?"
+    tiposSeleccionados.every((tipo) => pokemon.tipos.includes(tipo)),
+  );
 }

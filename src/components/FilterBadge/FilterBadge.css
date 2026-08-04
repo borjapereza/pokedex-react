@@ -1,4 +1,5 @@
-.badge {
+.filter-badge {
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,94 +15,122 @@
   font-size: var(--font-size-caption);
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-body);
+
+  transition:
+    opacity 0.2s ease,
+    outline 0.2s ease,
+    transform 0.2s ease;
 }
 
-.badge--normal {
+.filter-badge:hover {
+  transform: translateY(-2px);
+}
+
+.filter-badge--normal {
   background-color: #b9c0cd;
   color: var(--color-surface);
 }
 
-.badge--fire {
+.filter-badge--fire {
   background-color: #ff1c1c;
   color: var(--color-surface);
 }
 
-.badge--water {
+.filter-badge--water {
   background-color: #00b2ff;
   color: var(--color-surface);
 }
 
-.badge--electric {
+.filter-badge--electric {
   background-color: #ffca02;
   color: var(--color-text-primary);
 }
 
-.badge--grass {
+.filter-badge--grass {
   background-color: #34dd01;
   color: var(--color-text-primary);
 }
 
-.badge--ice {
+.filter-badge--ice {
   background-color: #bdf3ff;
   color: var(--color-text-primary);
 }
 
-.badge--fighting {
+.filter-badge--fighting {
   background-color: #ff7802;
   color: var(--color-surface);
 }
 
-.badge--poison {
+.filter-badge--poison {
   background-color: #db5ecb;
   color: var(--color-surface);
 }
 
-.badge--ground {
+.filter-badge--ground {
   background-color: #d88431;
   color: var(--color-surface);
 }
 
-.badge--flying {
+.filter-badge--flying {
   background-color: #57dcf4;
   color: var(--color-text-primary);
 }
 
-.badge--psychic {
+.filter-badge--psychic {
   background-color: #f86fe5;
   color: var(--color-surface);
 }
 
-.badge--bug {
+.filter-badge--bug {
   background-color: #01ae2f;
   color: var(--color-surface);
 }
 
-.badge--rock {
+.filter-badge--rock {
   background-color: #92b4a2;
   color: var(--color-surface);
 }
 
-.badge--ghost {
+.filter-badge--ghost {
   background-color: #b867ad;
   color: var(--color-surface);
 }
 
-.badge--dragon {
+.filter-badge--dragon {
   background-color: #716ca1;
   color: var(--color-surface);
 }
 
-.badge--dark {
+.filter-badge--dark {
   background-color: #7a7f8b;
   color: var(--color-surface);
 }
 
-.badge--steel {
+.filter-badge--steel {
   background-color: #bed1ef;
   color: var(--color-text-primary);
 }
 
-.badge--fairy {
+.filter-badge--fairy {
   background-color: #ffc2f7;
   color: var(--color-text-primary);
+}
+
+.filter-badge--attack {
+  background-color: #00b2ff;
+  color: var(--color-surface);
+}
+
+.filter-badge--defend {
+  background-color: #ff1c1c;
+  color: var(--color-surface);
+}
+
+.filter-badge--selected {
+  border: 1px solid var(--color-primary);
+  outline: 2px solid var(--color-primary);
+}
+
+.filter-badge--disabled {
+  opacity: 0.5;
 }
