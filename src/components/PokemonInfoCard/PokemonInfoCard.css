@@ -1,0 +1,120 @@
+.pokemon-info-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+
+  padding: var(--space-lg);
+
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow-md);
+}
+
+.pokemon-info-card__header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.pokemon-info-card__title {
+  justify-self: start;
+  color: var(--color-primary);
+}
+
+.pokemon-info-card__number {
+  justify-self: center;
+  color: var(--color-text-secondary);
+}
+
+.pokemon-info-card__close {
+  justify-self: end;
+  width: 36px;
+  height: 36px;
+
+  border: none;
+  border-radius: 50%;
+
+  background-color: transparent;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s ease;
+}
+
+.pokemon-info-card__close:hover {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+}
+
+.pokemon-info-card__body {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: var(--space-lg);
+}
+
+.pokemon-info-card__left {
+  display: flex;
+  flex-direction: column;
+
+  flex: 1;
+
+  max-width: 310px;
+
+  gap: var(--space-md);
+}
+
+.pokemon-info-card__image {
+  width: 100%;
+  flex: 1;
+
+  object-fit: contain;
+}
+
+.pokemon-info-card__types {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: var(--space-sm);
+}
+
+.pokemon-info-card__right {
+  display: flex;
+  flex-direction: column;
+
+  flex: 1;
+
+  gap: var(--space-sm);
+
+  max-width: 310px;
+}
+
+.pokemon-info-card__genus {
+  color: var(--color-primary);
+}
+
+.pokemon-info-card__abilities {
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--space-xs);
+}
+
+/*.pokemon-info-card__label {
+}*/
+
+.pokemon-info-card__abilities ul {
+  padding-left: var(--space-lg);
+  font-size: var(--font-size-caption);
+  color: var(--color-text-secondary);
+}
+
+.pokemon-info-card__measurements {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-size-caption);
+  color: var(--color-text-secondary);
+}

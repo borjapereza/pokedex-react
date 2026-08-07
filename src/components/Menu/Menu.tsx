@@ -15,18 +15,18 @@ export default function Menu() {
             Inicio
           </NavLink>
         </li>
-
+        {/*
         <li>
           <NavLink to="/equipo" className={getLinkClass}>
             Mi equipo
           </NavLink>
         </li>
-
         <li>
           <NavLink to="/tipos" className={getLinkClass}>
             Tipos
           </NavLink>
         </li>
+        */}
       </ul>
     </nav>
   );

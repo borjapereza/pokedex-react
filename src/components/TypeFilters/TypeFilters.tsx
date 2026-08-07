@@ -1,4 +1,4 @@
-import { TIPOS } from "../../services/types";
+import { TIPOS } from "../../services/constants";
 
 import FilterBadge from "../FilterBadge/FilterBadge";
 

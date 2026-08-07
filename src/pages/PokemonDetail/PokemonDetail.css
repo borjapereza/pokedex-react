@@ -1,0 +1,9 @@
+.pokemon-detail {
+  width: 100%;
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: var(--space-xl);
+
+  display: flex;
+  justify-content: center;
+}

@@ -7,6 +7,7 @@ export interface PokemonCardProps {
   artwork: string;
   tipos: string[];
   accion?: React.ReactNode;
+  onClick?: () => void;
 }
 
 export default function PokemonCard({
@@ -15,6 +16,7 @@ export default function PokemonCard({
   artwork,
   tipos,
   accion,
+  onClick,
 }: PokemonCardProps) {
   // Si tiene la prop accion, añadimos la clase modifier pokemon-card--with-action
   const cardClassName = `
@@ -22,7 +24,7 @@ export default function PokemonCard({
   `;
 
   return (
-    <article className={cardClassName}>
+    <article className={cardClassName} onClick={onClick}>
       <img className="pokemon-card__image" src={artwork} alt={nombre} />
 
       <div className="pokemon-card__header">

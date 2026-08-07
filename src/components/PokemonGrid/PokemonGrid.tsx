@@ -9,11 +9,13 @@ import "./PokemonGrid.css";
 export interface PokemonGridProps {
   listaPokemon: Pokemon[];
   sentinelRef: RefObject<HTMLDivElement | null>;
+  onPokemonClick: (pokemon: Pokemon) => void;
 }
 
 export default function PokemonGrid({
   listaPokemon,
   sentinelRef,
+  onPokemonClick,
 }: PokemonGridProps) {
   return (
     <>
@@ -25,14 +27,12 @@ export default function PokemonGrid({
             nombre={pokemon.nombre}
             artwork={pokemon.artwork}
             tipos={pokemon.tipos}
+            onClick={() => onPokemonClick(pokemon)}
           />
         ))}
       </div>
 
-      <div
-        ref={sentinelRef}
-        className="pokemon-grid__sentinel"
-      />
+      <div ref={sentinelRef} className="pokemon-grid__sentinel" />
     </>
   );
 }
