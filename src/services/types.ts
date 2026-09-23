@@ -31,6 +31,20 @@ export interface PokemonDetail extends Pokemon {
   evolutionChainUrl: string;
 }
 
+export type EvolutionBranch = number[];
+
+export type EvolutionBranches = EvolutionBranch[];
+
+export interface EvolutionInfo {
+  preevoluciones: number[];
+  evoluciones: number[];
+}
+
+export interface EvolutionCardProps {
+  titulo: string;
+  pokemonArbolEvoluciones: Pokemon[];
+}
+
 // ---------------- API ----------------
 export interface PokemonApi {
   species: {
@@ -80,4 +94,25 @@ export interface PokemonAbilityApi {
     };
     name: string;
   }[];
+}
+
+export interface PokemonDetailApi {
+  pokemon: PokemonApi;
+  species: PokemonSpeciesApi;
+  abilities: {
+    ability: PokemonAbilityApi;
+    is_hidden: boolean;
+  }[];
+}
+
+export interface EvolutionChainApi {
+  chain: EvolutionChainNode;
+}
+
+export interface EvolutionChainNode {
+  species: {
+    name: string;
+    url: string;
+  };
+  evolves_to: EvolutionChainNode[];
 }

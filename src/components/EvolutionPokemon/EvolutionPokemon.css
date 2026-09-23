@@ -1,0 +1,21 @@
+.evolution-pokemon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  max-width: var(--pokemon-evolution-width);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.evolution-pokemon:hover {
+  transform: translateY(-3px);
+}
+
+.evolution-pokemon span {
+  max-width: var(--pokemon-evolution-width);
+  color: var(--color-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

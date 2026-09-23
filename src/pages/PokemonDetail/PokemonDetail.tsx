@@ -1,45 +1,80 @@
 import "./PokemonDetail.css";
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { usePokemon } from "../../hooks/usePokemon";
-import { getPokemonDetail } from "../../services/pokemonApi";
-import type { PokemonDetail } from "../../services/types";
 
 import PokemonInfoCard from "../../components/PokemonInfoCard/PokemonInfoCard";
+import { usePokemonDetail } from "../../hooks/usePokemonDetail";
+import Loading from "../../components/Loading/Loading";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import { usePokemonEvolution } from "../../hooks/usePokemonEvolution";
+import { obtenerEvolucionesPokemon } from "../../services/pokemonUtils";
+import EvolutionCard from "../../components/EvolutionCard/EvolutionCard";
 
 export default function PokemonDetail() {
   const { id } = useParams();
 
   const { listaPokemon } = usePokemon();
 
-  const [pokemonDetalle, setPokemonDetalle] = useState<PokemonDetail | null>(
-    null,
-  );
+  const pokemonBase =
+    listaPokemon.find((pokemon) => pokemon.id === Number(id)) ?? null;
 
-  useEffect(() => {
-    async function cargarPokemon() {
-      const pokemonBase = listaPokemon.find(
-        (pokemon) => pokemon.id === Number(id),
-      );
+  const { pokemonDetail, error, esperando } = usePokemonDetail(pokemonBase);
 
-      if (!pokemonBase) return;
+  const {
+    evolutionBranches,
+    error: errorEvolution,
+    esperando: esperandoEvolution,
+  } = usePokemonEvolution(pokemonDetail?.evolutionChainUrl ?? null);
 
-      const detalle = await getPokemonDetail(pokemonBase);
+  const evolutionInfo =
+    pokemonDetail && !esperandoEvolution && !errorEvolution
+      ? obtenerEvolucionesPokemon(pokemonDetail, evolutionBranches)
+      : null;
 
-      setPokemonDetalle(detalle);
-    }
+  const pokemonEvoluciones = evolutionInfo
+    ? listaPokemon.filter((pokemon) =>
+        evolutionInfo.evoluciones.includes(pokemon.id),
+      )
+    : [];
 
-    cargarPokemon();
-  }, [id, listaPokemon]);
-
-  if (!pokemonDetalle) {
-    return <p>Pokemon no encontrado</p>;
-  }
+  const pokemonPreevoluciones = evolutionInfo
+    ? listaPokemon.filter((pokemon) =>
+        evolutionInfo.preevoluciones.includes(pokemon.id),
+      )
+    : [];
 
   return (
     <main className="pokemon-detail">
-      <PokemonInfoCard pokemon={pokemonDetalle} />
+      {esperando && <Loading />}
+
+      {error && <ErrorMessage />}
+
+      {!esperando && !error && pokemonDetail && (
+        <div className="pokemon-detail-content">
+          <PokemonInfoCard pokemon={pokemonDetail} />
+
+          <div className="pokemon-evolutions">
+            {!esperandoEvolution && !errorEvolution && (
+              <>
+                {pokemonPreevoluciones.length > 0 && (
+                  <EvolutionCard
+                    titulo="Preevoluciones"
+                    pokemonArbolEvoluciones={pokemonPreevoluciones}
+                  />
+                )}
+
+                {pokemonEvoluciones.length > 0 && (
+                  <EvolutionCard
+                    titulo="Evoluciones"
+                    pokemonArbolEvoluciones={pokemonEvoluciones}
+                  />
+                )}
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </main>
   );
 }

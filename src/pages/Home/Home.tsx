@@ -9,14 +9,16 @@ import {
 } from "../../services/pokemonUtils";
 import { useInfiniteScroll } from "../../hooks/useInfiniteScroll";
 import { useState } from "react";
-import { getPokemonDetail } from "../../services/pokemonApi";
-import type { Pokemon, PokemonDetail } from "../../services/types";
+import type { Pokemon } from "../../services/types";
 import PokemonInfoCard from "../../components/PokemonInfoCard/PokemonInfoCard";
+import { usePokemonDetail } from "../../hooks/usePokemonDetail";
+import Loading from "../../components/Loading/Loading";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 
 export default function Home() {
   const [tiposSeleccionados, setTiposSeleccionados] = useState<string[]>([]);
   const [pokemonSeleccionado, setPokemonSeleccionado] =
-    useState<PokemonDetail | null>(null);
+    useState<Pokemon | null>(null);
 
   const cambiarTipo = (tipo: string) => {
     setTiposSeleccionados((tiposActuales) => {
@@ -50,11 +52,12 @@ export default function Home() {
 
   const pokemonVisibles = pokemonMostrar.slice(0, cantidadMostrar);
 
-  const handlePokemonClick = async (pokemon: Pokemon) => {
-    const detalle = await getPokemonDetail(pokemon);
-
-    setPokemonSeleccionado(detalle);
+  const handlePokemonClick = (pokemon: Pokemon) => {
+    setPokemonSeleccionado(pokemon);
   };
+
+  const { pokemonDetail, error, esperando } =
+    usePokemonDetail(pokemonSeleccionado);
 
   return (
     <main className="home">
@@ -75,11 +78,17 @@ export default function Home() {
           onClick={() => setPokemonSeleccionado(null)}
         >
           <div onClick={(e) => e.stopPropagation()}>
-            <PokemonInfoCard
-              pokemon={pokemonSeleccionado}
-              mostrarCerrar
-              onCerrar={() => setPokemonSeleccionado(null)}
-            />
+            {esperando && <Loading />}
+
+            {error && <ErrorMessage />}
+
+            {!esperando && pokemonDetail && (
+              <PokemonInfoCard
+                pokemon={pokemonDetail}
+                mostrarCerrar
+                onCerrar={() => setPokemonSeleccionado(null)}
+              />
+            )}
           </div>
         </div>
       )}

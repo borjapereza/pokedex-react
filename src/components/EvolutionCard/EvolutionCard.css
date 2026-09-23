@@ -1,0 +1,32 @@
+.evolution-card {
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--space-md);
+  align-items: center;
+  padding: var(--space-lg);
+
+  background-color: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  color: var(--color-primary);
+}
+
+.evolution-card__pokemon {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  max-width: calc(var(--pokemon-evolution-width) * 3 + var(--space-sm) * 2);
+}
+
+@media (max-width: 465px) {
+  .evolution-card__pokemon {
+    max-width: calc(var(--pokemon-evolution-width) * 2 + var(--space-sm));
+  }
+}
+
+@media (max-width: 350px) {
+  .evolution-card__pokemon {
+    max-width: calc(var(--pokemon-evolution-width));
+  }
+}
