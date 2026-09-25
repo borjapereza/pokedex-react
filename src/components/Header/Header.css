@@ -11,8 +11,98 @@
   padding: 0 var(--space-sm); /* Sin padding vertical y Space SM a izquierda y derecha */
 
   display: flex; /* Activa Flexbox */
+  flex-wrap: wrap;
 
   align-items: center; /* Centra los elementos verticalmente */
   /* gap Separación entre los elementos del contenedor Flex */
   justify-content: space-between; /* Coloca el primer elemento al inicio y el último al final */
+}
+
+.header__mobile-actions,
+.header__mobile-menu,
+.header__mobile-search {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  /* versión móvil si es menor de 768 px*/
+  .header__container {
+    height: auto; /* Para cuando necesite crecer */
+    min-height: 100px;
+  }
+
+  .header__container > .menu,
+  .header__container > .search {
+    /* Ocultar hijos directos de header__container menu y search */
+    display: none;
+  }
+
+  .header__mobile-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+
+  .header__mobile-button {
+    /* Area pulsable del boton */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+  }
+
+  .header__mobile-button img {
+    width: 25px;
+    height: 25px;
+  }
+
+  .header__mobile-menu {
+    display: block;
+    width: 100%;
+    height: 60px;
+  }
+
+  .header__mobile-menu .menu ul {
+    justify-content: center;
+  }
+
+  .header__mobile-search {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding-bottom: var(--space-sm);
+  }
+
+  .header__mobile-search .search-input {
+    width: 280px;
+  }
+}
+
+@media (max-width: 375px) {
+  .header__mobile-actions {
+    gap: var(--space-sm);
+  }
+}
+
+@media (max-width: 335px) {
+  .header__mobile-actions {
+    width: 100%;
+    justify-content: flex-end;
+    padding-bottom: var(--space-sm);
+    gap: var(--space-lg);
+  }
+
+  .header__mobile-menu {
+    height: auto;
+  }
+
+  .header__mobile-menu .menu ul {
+    flex-direction: column;
+    align-items: flex-end;
+    padding-bottom: var(--space-sm);
+  }
+  .menu__link.active::after {
+    display: none;
+  }
 }

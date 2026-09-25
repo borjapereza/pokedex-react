@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import type { PokemonDetail } from "../../services/types";
 import Badge from "../Badge/Badge";
 import PokemonStats from "../PokemonStats/PokemonStats";
@@ -5,25 +6,37 @@ import "./PokemonInfoCard.css";
 
 interface PokemonInfoCardProps {
   pokemon: PokemonDetail;
-  mostrarCerrar?: boolean;
+  esModal?: boolean;
   onCerrar?: () => void;
 }
 
 export default function PokemonInfoCard({
   pokemon,
-  mostrarCerrar = false,
+  esModal = false,
   onCerrar,
 }: PokemonInfoCardProps) {
   return (
     <article className="pokemon-info-card">
       <header className="pokemon-info-card__header">
-        <h2 className="pokemon-info-card__title">{pokemon.nombre}</h2>
+        <h2 className="pokemon-info-card__title">
+          {esModal ? (
+            <Link to={`/pokemon/${pokemon.id}`}>{pokemon.nombre}</Link>
+          ) : (
+            pokemon.nombre
+          )}
+        </h2>
 
         <span className="pokemon-info-card__number">
-          #{pokemon.id.toString().padStart(4, "0")}
+          {esModal ? (
+            <Link to={`/pokemon/${pokemon.id}`}>
+              #{pokemon.id.toString().padStart(4, "0")}
+            </Link>
+          ) : (
+            `#${pokemon.id.toString().padStart(4, "0")}`
+          )}
         </span>
 
-        {mostrarCerrar && (
+        {esModal && (
           <button
             className="pokemon-info-card__close"
             onClick={onCerrar}
@@ -36,11 +49,24 @@ export default function PokemonInfoCard({
 
       <div className="pokemon-info-card__body">
         <div className="pokemon-info-card__left">
-          <img
-            className="pokemon-info-card__image"
-            src={pokemon.artwork}
-            alt={pokemon.nombre}
-          />
+          {esModal ? (
+            <Link
+              className="pokemon-info-card__image-link"
+              to={`/pokemon/${pokemon.id}`}
+            >
+              <img
+                className="pokemon-info-card__image"
+                src={pokemon.artwork}
+                alt={pokemon.nombre}
+              />
+            </Link>
+          ) : (
+            <img
+              className="pokemon-info-card__image"
+              src={pokemon.artwork}
+              alt={pokemon.nombre}
+            />
+          )}
 
           <div className="pokemon-info-card__types">
             {pokemon.tipos.map((tipo) => (

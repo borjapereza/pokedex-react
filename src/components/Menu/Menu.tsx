@@ -25,8 +25,9 @@ export default function Menu() {
           <NavLink to="/tipos" className={getLinkClass}>
             Tipos
           </NavLink>
-        </li>
-        */}
+        </li> */
+        /* Si se añaden elementos cambiar @media del header.css para que se adapte
+         */}
       </ul>
     </nav>
   );

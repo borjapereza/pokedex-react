@@ -85,7 +85,7 @@ export default function Home() {
             {!esperando && pokemonDetail && (
               <PokemonInfoCard
                 pokemon={pokemonDetail}
-                mostrarCerrar
+                esModal
                 onCerrar={() => setPokemonSeleccionado(null)}
               />
             )}

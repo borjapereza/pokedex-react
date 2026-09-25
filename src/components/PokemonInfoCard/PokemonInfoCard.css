@@ -93,6 +93,12 @@
   object-fit: contain;
 }
 
+.pokemon-info-card__image-link {
+  display: flex;
+  flex: 1;
+  width: 100%;
+}
+
 .pokemon-info-card__types {
   display: flex;
   justify-content: center;

@@ -1,0 +1,19 @@
+.footer {
+  height: 60px;
+  background-color: var(--color-primary);
+}
+
+.footer__container {
+  max-width: 1220px;
+  height: 100%;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer p {
+  color: var(--color-surface);
+  font-size: var(--font-size-caption);
+}
