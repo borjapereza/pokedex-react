@@ -1,3 +1,4 @@
+import { EFECTIVIDADES, TIPOS, traduccionTipo } from "./constants";
 import type {
   EvolutionBranch,
   EvolutionBranches,
@@ -11,27 +12,6 @@ import type {
   PokemonSpeciesApi,
   PokemonStats,
 } from "./types";
-
-export const traduccionTipo: Record<string, string> = {
-  normal: "Normal",
-  fire: "Fuego",
-  water: "Agua",
-  electric: "Eléctrico",
-  grass: "Planta",
-  ice: "Hielo",
-  fighting: "Lucha",
-  poison: "Veneno",
-  ground: "Tierra",
-  flying: "Volador",
-  psychic: "Psíquico",
-  bug: "Bicho",
-  rock: "Roca",
-  ghost: "Fantasma",
-  dragon: "Dragón",
-  dark: "Siniestro",
-  steel: "Acero",
-  fairy: "Hada",
-};
 
 export function traducirTipo(tipo: string): string {
   return traduccionTipo[tipo] ?? tipo;
@@ -213,4 +193,44 @@ export function obtenerEvolucionesPokemon(
     preevoluciones: [...preevoluciones],
     evoluciones: [...evoluciones],
   };
+}
+
+export function obtenerEfectividades(
+  tiposSeleccionados: string[],
+  modo: string,
+): Record<string, number> {
+  // Construimos una tabla interna con todos los tipos asignando valor 1
+  const resultado: Record<string, number> = TIPOS.reduce(
+    (resultado, tipo) => {
+      resultado[tipo] = 1;
+      return resultado;
+    },
+    {} as Record<string, number>,
+  );
+
+  if (modo === "attack") {
+    const efectividades = EFECTIVIDADES[tiposSeleccionados[0]];
+
+    Object.entries(efectividades ?? {}).forEach(
+      ([tipoDefensor, multiplicador]) => {
+        resultado[tipoDefensor] *= multiplicador;
+      },
+    );
+  }
+
+  if (modo === "defend") {
+    TIPOS.forEach((tipoAtacante) => {
+      const efectividades = EFECTIVIDADES[tipoAtacante];
+
+      tiposSeleccionados.forEach((tipoDefensor) => {
+        const multiplicador = efectividades?.[tipoDefensor];
+
+        if (multiplicador !== undefined) {
+          resultado[tipoAtacante] *= multiplicador;
+        }
+      });
+    });
+  }
+
+  return resultado;
 }

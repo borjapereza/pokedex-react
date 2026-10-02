@@ -1,0 +1,38 @@
+.mode-badge {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 105px;
+  padding: var(--space-sm) var(--space-md);
+
+  border-radius: var(--radius-xl);
+
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+
+  transition:
+    opacity 0.2s ease,
+    outline 0.2s ease,
+    transform 0.2s ease;
+}
+
+.mode-badge--attack {
+  background-color: #00b2ff;
+  color: var(--color-surface);
+}
+
+.mode-badge--defend {
+  background-color: #ff1c1c;
+  color: var(--color-surface);
+}
+
+.mode-badge--selected {
+  border: 1px solid var(--color-primary);
+  outline: 2px solid var(--color-primary);
+}

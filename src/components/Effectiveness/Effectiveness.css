@@ -1,0 +1,7 @@
+.effectiveness {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xl) var(--space-2xl);
+  justify-content: center;
+  margin-top: var(--space-md);
+}

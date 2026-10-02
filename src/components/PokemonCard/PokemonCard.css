@@ -38,9 +38,6 @@
 }
 
 .pokemon-card__name {
-  font-size: var(--font-size-h3);
-  font-weight: var(--font-weight-semibold);
-  line-height: var(--line-height-title);
   color: var(--color-primary);
   white-space: nowrap;
   overflow: hidden;
@@ -49,8 +46,6 @@
 
 .pokemon-card__number {
   font-size: var(--font-size-caption);
-  font-weight: var(--font-weight-regular);
-  line-height: var(--line-height-body);
   color: var(--color-text-secondary);
 }
 

@@ -21,12 +21,13 @@ export default function Menu() {
             Mi equipo
           </NavLink>
         </li>
+        */}
         <li>
           <NavLink to="/tipos" className={getLinkClass}>
             Tipos
           </NavLink>
-        </li> */
-        /* Si se añaden elementos cambiar @media del header.css para que se adapte
+        </li>
+        {/* Si se añaden elementos cambiar @media del header.css para que se adapte
          */}
       </ul>
     </nav>

@@ -1,0 +1,15 @@
+.mode-filter {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.mode-filter__title {
+  color: var(--color-primary);
+}
+
+.mode-filter__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md) var(--space-lg);
+}
