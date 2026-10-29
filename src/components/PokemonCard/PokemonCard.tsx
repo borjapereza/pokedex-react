@@ -2,7 +2,7 @@ import Badge from "../Badge/Badge";
 import "./PokemonCard.css";
 
 export interface PokemonCardProps {
-  id: number;
+  id: number | null;
   nombre: string;
   artwork: string;
   tipos: string[];
@@ -18,10 +18,13 @@ export default function PokemonCard({
   accion,
   onClick,
 }: PokemonCardProps) {
-  // Si tiene la prop accion, añadimos la clase modifier pokemon-card--with-action
+  // Si tiene la prop acción, añadimos la clase modifier Pokémon-card--with-action
+  // Null para mi equipo hueco vacío
   const cardClassName = `
-  pokemon-card ${accion ? "pokemon-card--with-action" : ""}
-  `;
+  pokemon-card
+  ${accion ? "pokemon-card--with-action" : ""}
+  ${id === null ? "pokemon-card--empty" : ""}
+`;
 
   return (
     <article className={cardClassName} onClick={onClick}>
@@ -30,9 +33,11 @@ export default function PokemonCard({
       <div className="pokemon-card__header">
         <h3 className="pokemon-card__name">{nombre}</h3>
 
-        <span className="pokemon-card__number">
-          #{id.toString().padStart(4, "0")}
-        </span>
+        {id !== null && (
+          <span className="pokemon-card__number">
+            #{id.toString().padStart(4, "0")}
+          </span>
+        )}
       </div>
 
       <div className="pokemon-card__types">

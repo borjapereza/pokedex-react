@@ -14,6 +14,7 @@ import PokemonInfoCard from "../../components/PokemonInfoCard/PokemonInfoCard";
 import { usePokemonDetail } from "../../hooks/usePokemonDetail";
 import Loading from "../../components/Loading/Loading";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import PokemonModal from "../../components/PokemonModal/PokemonModal";
 
 export default function Home() {
   const [tiposSeleccionados, setTiposSeleccionados] = useState<string[]>([]);
@@ -73,24 +74,19 @@ export default function Home() {
         onPokemonClick={handlePokemonClick}
       />
       {pokemonSeleccionado && (
-        <div
-          className="pokemon-modal"
-          onClick={() => setPokemonSeleccionado(null)}
-        >
-          <div onClick={(e) => e.stopPropagation()}>
-            {esperando && <Loading />}
+        <PokemonModal onCerrar={() => setPokemonSeleccionado(null)}>
+          {esperando && <Loading />}
 
-            {error && <ErrorMessage />}
+          {error && <ErrorMessage />}
 
-            {!esperando && pokemonDetail && (
-              <PokemonInfoCard
-                pokemon={pokemonDetail}
-                esModal
-                onCerrar={() => setPokemonSeleccionado(null)}
-              />
-            )}
-          </div>
-        </div>
+          {!esperando && pokemonDetail && (
+            <PokemonInfoCard
+              pokemon={pokemonDetail}
+              esModal
+              onCerrar={() => setPokemonSeleccionado(null)}
+            />
+          )}
+        </PokemonModal>
       )}
     </main>
   );

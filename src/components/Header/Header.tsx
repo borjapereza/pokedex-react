@@ -23,30 +23,32 @@ export default function Header() {
   return (
     <header className="header">
       <div className="header__container">
-        <Logo />
+        <div className="header__top">
+          <Logo />
 
-        <Menu />
+          <Menu />
 
-        <SearchInput />
+          <SearchInput />
 
-        <div className="header__mobile-actions">
-          <button
-            className="header__mobile-button"
-            type="button"
-            onClick={abrirMenu}
-            aria-label="Abrir menú"
-          >
-            <img src={menuIconWhite} alt="" />
-          </button>
+          <div className="header__mobile-actions">
+            <button
+              className="header__mobile-button"
+              type="button"
+              onClick={abrirMenu}
+              aria-label="Abrir menú"
+            >
+              <img src={menuIconWhite} alt="" />
+            </button>
 
-          <button
-            className="header__mobile-button"
-            type="button"
-            onClick={abrirBusqueda}
-            aria-label="Abrir búsqueda"
-          >
-            <img src={searchIconWhite} alt="" />
-          </button>
+            <button
+              className="header__mobile-button"
+              type="button"
+              onClick={abrirBusqueda}
+              aria-label="Abrir búsqueda"
+            >
+              <img src={searchIconWhite} alt="" />
+            </button>
+          </div>
         </div>
 
         {menuAbierto && (

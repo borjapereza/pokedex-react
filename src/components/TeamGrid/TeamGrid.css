@@ -1,0 +1,10 @@
+.team-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xl) var(--space-2xl);
+  justify-content: center;
+}
+
+.pokemon-card--empty .pokemon-card__image {
+  opacity: 0.3;
+}

@@ -1,0 +1,52 @@
+.team-pokemon-selector {
+  width: min(90vw, 600px);
+  padding: var(--space-xl);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.team-pokemon-selector h2 {
+  color: var(--color-primary);
+}
+
+.team-pokemon-selector__input {
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+}
+
+.team-pokemon-selector__results {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-md);
+}
+
+.team-pokemon-selector__remove {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+
+.team-pokemon-selector__remove img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.team-pokemon-selector__empty {
+  color: var(--color-text-secondary);
+  text-align: center;
+}

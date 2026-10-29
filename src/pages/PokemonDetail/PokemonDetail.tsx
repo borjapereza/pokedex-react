@@ -10,6 +10,7 @@ import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import { usePokemonEvolution } from "../../hooks/usePokemonEvolution";
 import { obtenerEvolucionesPokemon } from "../../services/pokemonUtils";
 import EvolutionCard from "../../components/EvolutionCard/EvolutionCard";
+import NotFound from "../NotFound/NotFound";
 
 export default function PokemonDetail() {
   const { id } = useParams();
@@ -33,16 +34,20 @@ export default function PokemonDetail() {
       : null;
 
   const pokemonEvoluciones = evolutionInfo
-    ? listaPokemon.filter((pokemon) =>
-        evolutionInfo.evoluciones.includes(pokemon.id),
-      )
+    ? evolutionInfo.evoluciones
+        .map((id) => listaPokemon.find((pokemon) => pokemon.id === id))
+        .filter((pokemon) => pokemon !== undefined)
     : [];
 
   const pokemonPreevoluciones = evolutionInfo
-    ? listaPokemon.filter((pokemon) =>
-        evolutionInfo.preevoluciones.includes(pokemon.id),
-      )
+    ? evolutionInfo.preevoluciones
+        .map((id) => listaPokemon.find((pokemon) => pokemon.id === id))
+        .filter((pokemon) => pokemon !== undefined)
     : [];
+
+  if (!pokemonBase) {
+    return <NotFound />;
+  }
 
   return (
     <main className="pokemon-detail">

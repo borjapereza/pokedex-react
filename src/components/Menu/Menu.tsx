@@ -15,20 +15,18 @@ export default function Menu() {
             Inicio
           </NavLink>
         </li>
-        {/*
+
         <li>
           <NavLink to="/equipo" className={getLinkClass}>
             Mi equipo
           </NavLink>
         </li>
-        */}
         <li>
           <NavLink to="/tipos" className={getLinkClass}>
             Tipos
           </NavLink>
         </li>
-        {/* Si se añaden elementos cambiar @media del header.css para que se adapte
-         */}
+        {/* Si se añaden elementos cambiar @media del header.css para que se adapte*/}
       </ul>
     </nav>
   );
